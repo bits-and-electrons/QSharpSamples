@@ -4,17 +4,21 @@ namespace AdderCircuit {
     open Microsoft.Quantum.Convert;
     open Microsoft.Quantum.Intrinsic;
     open Microsoft.Quantum.Arithmetic;
+	open Microsoft.Quantum.Diagnostics;
     
     @EntryPoint()
-    operation StartCircuit() : Unit {
+    operation RunCircuit() : Unit {
         mutable result1 = AdderCircuit(2, 3);
-        Message($"2 + 3 = {result1}");
+		Fact(result1 == 5, $"3 + 2 != {result1}");
+        Message($"3 + 2 = {result1}");
 
         mutable result2 = AdderCircuit(5, 6);
-        Message($"5 + 6 = {result2}");
+		Fact(result2 == 11, $"6 + 5 != {result2}");
+        Message($"6 + 5 = {result2}");
 
         mutable result3 = AdderCircuit(8, 9);
-        Message($"8 + 9 = {result3}");
+		Fact(result3 == 17, $"9 + 8 != {result3}");
+        Message($"9 + 8 = {result3}");
     }
 
     operation AdderCircuit (a_Int: Int, b_Int: Int) : Int  {

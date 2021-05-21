@@ -4,16 +4,20 @@ namespace SubtractorCircuit {
     open Microsoft.Quantum.Convert;
     open Microsoft.Quantum.Intrinsic;
     open Microsoft.Quantum.Arithmetic;
+	open Microsoft.Quantum.Diagnostics;
     
     @EntryPoint()
-    operation StartCircuit() : Unit {
+    operation RunCircuit() : Unit {
         mutable result1 = SubtractorCircuit(1, 3);
+		Fact(result1 == 2, $"3 - 1 != {result1}");
         Message($"3 - 1 = {result1}");
 
         mutable result2 = SubtractorCircuit(2, 5);
+		Fact(result2 == 3, $"5 - 2 != {result2}");
         Message($"5 - 2 = {result2}");
 
         mutable result3 = SubtractorCircuit(3, 8);
+		Fact(result3 == 5, $"8 - 3 != {result3}");
         Message($"8 - 3 = {result3}");
     }
 
